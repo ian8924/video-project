@@ -1,14 +1,18 @@
 <template>
   <div class="vedioItem">
       <div class="img-item">
-        <img :src="img" alt="" width="100%">
+        <img class="vedioImg" :src="img" alt="" >
         <div class="timer">
              12:22
+        </div>
+        <div class="svg" @click="changeLike">
+          <img v-if="like" src="../assets/like.svg" >
+          <img v-else src="../assets/dislike.svg" >
         </div>
       </div>
       <div class="title"><p class="">{{title}}</p></div>
       <div class="channel"><p>頻道：{{channelTitle}}</p></div>
-      <div class="description"><p class="ellipsis">{{description}}</p></div>
+      <div class="description">{{description}}</div>
   </div>
 </template>
 
@@ -17,6 +21,16 @@ export default {
   name: 'VedioItem',
   props: {
     vedioInfo: Object
+  },
+  data () {
+    return {
+      like: false
+    }
+  },
+  mounted () {
+    // 定義是否有加入收藏
+    const likes = JSON.parse(localStorage.getItem('likes')) || []
+    this.like = likes.indexOf(this.vedioInfo.id) !== -1
   },
   computed: {
     title () {
@@ -31,17 +45,42 @@ export default {
     description () {
       return this.vedioInfo.snippet.description
     }
+  },
+  methods: {
+    changeLike () {
+      this.like = !this.like
+      if (this.like) {
+        // 加入收藏
+        if (!localStorage.getItem('likes')) {
+          localStorage.setItem('likes', JSON.stringify([]))
+        }
+        const data = JSON.parse(localStorage.getItem('likes'))
+        const addItem = [...data, this.vedioInfo.id]
+        localStorage.setItem('likes', JSON.stringify(addItem))
+        alert('新增成功')
+      } else {
+        // 移除收藏
+        const data = JSON.parse(localStorage.getItem('likes'))
+        const removeItem = data.filter((item) => {
+          return item !== this.vedioInfo.id
+        })
+        localStorage.setItem('likes', JSON.stringify(removeItem))
+      }
+    }
   }
 }
 </script>
 
 <style scoped lang="scss">
 .vedioItem{
-    width: 240px;
-    height: 300px;
-    background: rgb(194, 191, 191);
-    margin: 12px;
+    height: 600px;
+    padding-bottom: 10px;
+    background: #c2bfbf;
     .img-item{
+      .vedioImg{
+          width: 100%;
+          height: 300px;
+       }
         position: relative;
         .timer{
             background: rgba(149, 160, 172,.5);
@@ -49,6 +88,15 @@ export default {
             position: absolute;
             bottom:10px;
             right:5px;
+        }
+        .svg{
+          img{
+            width: 40px;
+            height: 40px;
+            position: absolute;
+            top:0px;
+            left:5px;
+          }
         }
     }
     .title{
@@ -66,14 +114,11 @@ export default {
         margin:10px 0 0 20px;
     }
     .description{
-        width: 100%;
+        height: 200px;
         font-size: 10px;
-    }
-    .ellipsis {
         overflow:hidden;
-        text-overflow: ellipsis;
-        white-space: nowrap;
-        margin:10px 0 0 10px;
+        text-overflow:ellipsis;
+        white-space: pre-line;
     }
 }
 

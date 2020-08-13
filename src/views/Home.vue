@@ -1,6 +1,6 @@
 <template>
   <div class="home">
-    <VedioList :videoList="videoList"></VedioList>
+    <VedioList :videoList="videoList"/>
   </div>
 </template>
 
@@ -17,10 +17,9 @@ export default {
   computed: {
     videoList () {
       return this.$store.state.videoList
-    },
-    pageInfo () {
-      return 0
     }
+  },
+  methods: {
   }
 }
 </script>
