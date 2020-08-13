@@ -41,9 +41,7 @@ export default {
     // 當前頁面VedioList
     pageVedioList () {
       const filterList = this.videoList.filter((item, index) => {
-        if (index === 0 || Math.ceil(index / 12) === this.pageNum) {
-          return true
-        }
+        return Math.ceil((index + 1) / 12) === this.pageNum
       })
       return filterList
     },
