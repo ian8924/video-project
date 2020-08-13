@@ -44,11 +44,11 @@ export default {
     .img-item{
         position: relative;
         .timer{
-            background: rgb(44, 45, 46);
+            background: rgba(149, 160, 172,.5);
             color: white;
             position: absolute;
             bottom:10px;
-            right:0;
+            right:5px;
         }
     }
     .title{
