@@ -1,18 +1,26 @@
 <template>
   <div class="home">
-    <img alt="Vue logo" src="../assets/logo.png">
-    <HelloWorld msg="Welcome to Your Vue.js App"/>
+    <VedioList :videoList="videoList"></VedioList>
   </div>
 </template>
 
 <script>
-// @ is an alias to /src
-import HelloWorld from '@/components/HelloWorld.vue'
-
+import VedioList from '../components/VideoList'
 export default {
   name: 'Home',
   components: {
-    HelloWorld
+    VedioList
+  },
+  mounted () {
+    this.$store.dispatch('getVideoList')
+  },
+  computed: {
+    videoList () {
+      return this.$store.state.videoList
+    },
+    pageInfo () {
+      return 0
+    }
   }
 }
 </script>
