@@ -78,6 +78,10 @@ export default {
     height: 30px;
     border: 1px solid gray;
     list-style:none;
+    &:hover{
+      background: gray;
+      color:white
+    }
   }
   .prev-item{
     text-align: center;
@@ -86,6 +90,10 @@ export default {
     height: 30px;
     border: 1px solid gray;
     list-style:none;
+    &:hover{
+      background: gray;
+      color:white;
+    }
   }
   .next-item{
     text-align: center;
@@ -94,6 +102,10 @@ export default {
     height: 30px;
     border: 1px solid gray;
     list-style:none;
+    &:hover{
+      background: gray;
+      color:white;
+    }
   }
   .active{
       background: gray;
