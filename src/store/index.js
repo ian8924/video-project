@@ -10,6 +10,9 @@ export default new Vuex.Store({
     pageInfo: {}
   },
   mutations: {
+    clearVedioList (state) {
+      state.videoList = []
+    },
     changeVedioList (state, newState) {
       state.videoList = [...state.videoList, ...newState]
     },

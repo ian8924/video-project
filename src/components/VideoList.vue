@@ -40,14 +40,14 @@ export default {
   computed: {
     // 當前頁面VedioList
     pageVedioList () {
-      const filterList = this.$store.state.videoList.filter((item, index) => {
+      const filterList = this.videoList.filter((item, index) => {
         return Math.ceil(index / 12) === this.pageNum
       })
       return filterList
     },
     // 總頁數
     totalPages () {
-      return Math.ceil(this.$store.state.videoList.length / 12)
+      return Math.ceil(this.videoList.length / 12)
     }
   },
   methods: {

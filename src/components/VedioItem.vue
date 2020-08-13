@@ -10,9 +10,12 @@
           <img v-else src="../assets/dislike.svg" >
         </div>
       </div>
-      <div class="title"><p class="">{{title}}</p></div>
+      <div class="title" ><p class="">{{title}}</p></div>
       <div class="channel"><p>頻道：{{channelTitle}}</p></div>
-      <div class="description">{{description}}</div>
+      <div class="hover" :title="description">
+        <a>完整訊息</a>
+      </div>
+      <!-- <div class="description" >{{description}}</div> -->
   </div>
 </template>
 
@@ -73,7 +76,7 @@ export default {
 
 <style scoped lang="scss">
 .vedioItem{
-    height: 600px;
+    height: 400px;
     padding-bottom: 10px;
     background: #c2bfbf;
     .img-item{
@@ -113,12 +116,10 @@ export default {
         text-align: left;
         margin:10px 0 0 20px;
     }
-    .description{
-        height: 200px;
-        font-size: 10px;
-        overflow:hidden;
-        text-overflow:ellipsis;
-        white-space: pre-line;
+    .hover{
+          &:hover {
+            cursor: pointer;
+          }
     }
 }
 

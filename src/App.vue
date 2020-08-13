@@ -2,7 +2,7 @@
   <div id="app">
     <div id="nav">
       <router-link to="/">熱門影片</router-link> |
-      <router-link to="/about">我的收藏</router-link>
+      <router-link to="/MyLikes">我的收藏</router-link>
     </div>
     <router-view/>
   </div>

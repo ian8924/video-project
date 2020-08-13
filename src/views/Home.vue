@@ -12,6 +12,7 @@ export default {
     VedioList
   },
   mounted () {
+    this.$store.commit('clearVedioList')
     this.$store.dispatch('getVideoList')
   },
   computed: {
