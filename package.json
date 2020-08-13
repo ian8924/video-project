@@ -10,6 +10,9 @@
   "dependencies": {
     "axios": "^0.19.2",
     "core-js": "^3.6.5",
+    "mux.js": "^5.6.4",
+    "video.js": "^7.8.4",
+    "videojs-contrib-hls": "^5.15.0",
     "vue": "^2.6.11",
     "vue-router": "^3.2.0",
     "vuejs-paginate": "^2.1.0",

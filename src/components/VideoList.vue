@@ -1,7 +1,7 @@
 <template>
     <div>
         <div class="videList">
-            <VedioItem v-for="(item) in pageVedioList" :key="item.id" :vedioInfo="item"/>
+            <VedioItem v-for="item in pageVedioList" :key="item.id" :vedioInfo="item"/>
         </div>
         <paginate
             :page-count="totalPages"
@@ -41,7 +41,9 @@ export default {
     // 當前頁面VedioList
     pageVedioList () {
       const filterList = this.videoList.filter((item, index) => {
-        return Math.ceil(index / 12) === this.pageNum
+        if (index === 0 || Math.ceil(index / 12) === this.pageNum) {
+          return true
+        }
       })
       return filterList
     },
