@@ -5,7 +5,7 @@
         <div class="timer">
              12:22
         </div>
-        <div class="svg" @click="changeLike">
+        <div class="svg" @click.stop="changeLike">
           <img v-if="like" src="../assets/like.svg" >
           <img v-else src="../assets/dislike.svg" >
         </div>
@@ -60,7 +60,7 @@ export default {
         const data = JSON.parse(localStorage.getItem('likes'))
         const addItem = [...data, this.vedioInfo.id]
         localStorage.setItem('likes', JSON.stringify(addItem))
-        alert('新增成功')
+        alert('收藏成功')
       } else {
         // 移除收藏
         const data = JSON.parse(localStorage.getItem('likes'))
@@ -74,8 +74,7 @@ export default {
       this.$router.push({
         name: 'VideoContent',
         query: {
-          id: this.vedioInfo.id,
-          imgUrl: this.vedioInfo.snippet.thumbnails.high.url
+          id: this.vedioInfo.id
         }
       })
     }
