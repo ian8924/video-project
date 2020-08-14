@@ -87,6 +87,13 @@ export default {
     height: 400px;
     padding-bottom: 10px;
     background: #c2bfbf;
+    &:hover{
+      position: relative;
+      top:-5px;
+      left:-5px;
+      box-shadow: 2px 2px 2px rgb(51, 50, 50) ;
+      transition: all .5s;
+    }
     .img-item{
       .vedioImg{
           width: 100%;
