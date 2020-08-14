@@ -53,6 +53,10 @@ export default {
   methods: {
     clickCallback (pageNum) {
       this.pageNum = pageNum
+      window.scrollTo({
+        top: 0,
+        behavior: 'smooth'
+      })
     }
   }
 }
