@@ -1,5 +1,5 @@
 <template>
-  <div class="vedioItem">
+  <div class="vedioItem" @click="goContent">
       <div class="img-item">
         <img class="vedioImg" :src="img" alt="" >
         <div class="timer">
@@ -69,6 +69,15 @@ export default {
         })
         localStorage.setItem('likes', JSON.stringify(removeItem))
       }
+    },
+    goContent () {
+      this.$router.push({
+        name: 'VideoContent',
+        query: {
+          id: this.vedioInfo.id,
+          imgUrl: this.vedioInfo.snippet.thumbnails.high.url
+        }
+      })
     }
   }
 }

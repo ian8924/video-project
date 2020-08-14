@@ -1,5 +1,10 @@
 # video-project
 
+串接Youtube API
+Youtube 熱門影片列表
+加入收藏
+Vedio.js 播放影片
+
 ## Project setup
 ```
 yarn install
